@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +19,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', fn() => 'hello');
+Route::get('/test', fn() => User::first());
+
+Route::get('/create', function () {
+    $user = new User;
+
+    $user -> name = 'novandi';
+    $user -> email ='novandihartawan.2021@student.uny.ac.id';
+    $user -> password = '1234567890';
+    $user -> save();
+
+    return 'OK';
+});;
